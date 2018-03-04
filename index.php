@@ -1,16 +1,8 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Админ
- * Date: 02.03.2018
- * Time: 14:09
- */
 require_once 'model/db.php';
-
 $db = new db();
 $data = $db->query('SELECT * FROM blog')->all();
 ?>
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -26,8 +18,7 @@ $data = $db->query('SELECT * FROM blog')->all();
     <? foreach ($data as $key=>$value): ?>
         <li ng-controller="iterMyCtrl">
             <?=$value["text"]; ?>
-            <input type="button" id="comm<?=$value['id']?>" class="comm<?=$value['id']?> buttoncomm" value="Show Comments">
-            <input type="button" value="Send" ng-click="myIterCtrlMethod(<?=$value['id']?>)" >
+            <input type="button" value="Show Comments" ng-click="myIterCtrlMethod(<?=$value['id']?>)" >
             <ul>
                 <li ng-repeat="m in iterMsg">{{m.text_comment}}</li>
             </ul>
